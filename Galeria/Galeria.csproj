@@ -67,12 +67,66 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\bootstrap\bootstrap-grid.css" />
+    <Content Include="css\bootstrap\bootstrap-grid.min.css" />
+    <Content Include="css\bootstrap\bootstrap-grid.rtl.css" />
+    <Content Include="css\bootstrap\bootstrap-grid.rtl.min.css" />
+    <Content Include="css\bootstrap\bootstrap-reboot.css" />
+    <Content Include="css\bootstrap\bootstrap-reboot.min.css" />
+    <Content Include="css\bootstrap\bootstrap-reboot.rtl.css" />
+    <Content Include="css\bootstrap\bootstrap-reboot.rtl.min.css" />
+    <Content Include="css\bootstrap\bootstrap-utilities.css" />
+    <Content Include="css\bootstrap\bootstrap-utilities.min.css" />
+    <Content Include="css\bootstrap\bootstrap-utilities.rtl.css" />
+    <Content Include="css\bootstrap\bootstrap-utilities.rtl.min.css" />
+    <Content Include="css\bootstrap\bootstrap.css" />
+    <Content Include="css\bootstrap\bootstrap.min.css" />
+    <Content Include="css\bootstrap\bootstrap.rtl.css" />
+    <Content Include="css\bootstrap\bootstrap.rtl.min.css" />
+    <Content Include="css\Index.css" />
+    <Content Include="Index.aspx" />
+    <Content Include="js\bootstrap\bootstrap.bundle.js" />
+    <Content Include="js\bootstrap\bootstrap.bundle.min.js" />
+    <Content Include="js\bootstrap\bootstrap.esm.js" />
+    <Content Include="js\bootstrap\bootstrap.esm.min.js" />
+    <Content Include="js\bootstrap\bootstrap.js" />
+    <Content Include="js\bootstrap\bootstrap.min.js" />
+    <Content Include="js\index.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\bootstrap\bootstrap-grid.css.map" />
+    <Content Include="css\bootstrap\bootstrap-grid.min.css.map" />
+    <Content Include="css\bootstrap\bootstrap-grid.rtl.css.map" />
+    <Content Include="css\bootstrap\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="css\bootstrap\bootstrap-reboot.css.map" />
+    <Content Include="css\bootstrap\bootstrap-reboot.min.css.map" />
+    <Content Include="css\bootstrap\bootstrap-reboot.rtl.css.map" />
+    <Content Include="css\bootstrap\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="css\bootstrap\bootstrap-utilities.css.map" />
+    <Content Include="css\bootstrap\bootstrap-utilities.min.css.map" />
+    <Content Include="css\bootstrap\bootstrap-utilities.rtl.css.map" />
+    <Content Include="css\bootstrap\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="css\bootstrap\bootstrap.css.map" />
+    <Content Include="css\bootstrap\bootstrap.min.css.map" />
+    <Content Include="css\bootstrap\bootstrap.rtl.css.map" />
+    <Content Include="css\bootstrap\bootstrap.rtl.min.css.map" />
+    <Content Include="js\bootstrap\bootstrap.bundle.js.map" />
+    <Content Include="js\bootstrap\bootstrap.bundle.min.js.map" />
+    <Content Include="js\bootstrap\bootstrap.esm.js.map" />
+    <Content Include="js\bootstrap\bootstrap.esm.min.js.map" />
+    <Content Include="js\bootstrap\bootstrap.js.map" />
+    <Content Include="js\bootstrap\bootstrap.min.js.map" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -81,6 +135,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
