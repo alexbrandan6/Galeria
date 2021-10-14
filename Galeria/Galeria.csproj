@@ -104,10 +104,12 @@
     <Compile Include="Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="modelo\Imagen.cs" />
     <Compile Include="modelo\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="repositorio\AccesoDatos.cs" />
     <Compile Include="repositorio\FuncionesComunes.cs" />
+    <Compile Include="repositorio\ImagenRepositorio.cs" />
     <Compile Include="repositorio\UsuarioRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -51,13 +51,19 @@
                 </div>
             </div>
 
-            <div id="divUpload" runat="server" class="container">
+            <div id="divUpload" runat="server" class="container p-3 mt-3 border">
                 <div class="row d-flex justify-content-center">
                     <div class="col-12 col-sm-auto col-md-auto col-lg-auto p-2">
-                        <input id="fileUpload" runat="server" type="file" class="form-control"/>
+                        <asp:FileUpload ID="fileUpload" runat="server" CssClass="form-control"/>
                     </div>
                     <div class="col-12 col-sm-auto col-md-auto col-lg-auto p-2">
-                        <asp:Button ID="btnCargarArchivo" runat="server" CssClass="btn btn-warning" Text="Cargar" OnClientClick=""/>
+                        <asp:Button ID="btnCargarArchivo" runat="server" CssClass="btn btn-warning" Text="Cargar" OnClick="btnCargarArchivo_Click"/>
+                    </div>
+                </div>
+
+                <div class="row d-flex justify-content-center">
+                    <div class="col-12 p-2 d-flex justify-content-center">
+                        <asp:Label ID="lblErrorUpload" Text="" runat="server" />
                     </div>
                 </div>
             </div>
@@ -65,22 +71,24 @@
             <div id="divGaleria" runat="server" class="container border p-3 mt-3">
                 <div class="row">
                     <div class="col m-2">
-                        <img src="http://lorempixel.com/350/230/" alt="Alternate Text" />
-                    </div>
-                    <div class="col m-2">
-                        <img src="http://lorempixel.com/500/500/food" alt="Alternate Text" />
-                    </div>
-                    <div class="col m-2">
-                        <img src="http://lorempixel.com/400/200/sports/1/" alt="Alternate Text" />
-                    </div>
-                    <div class="col m-2">
-                        <img src="http://lorempixel.com/400/300/technics/3/Ubuntu/" alt="Alternate Text" />
-                    </div>
-                    <div class="col m-2">
-                        <img src="http://placekitten.com/g/200/300" alt="Alternate Text" />
-                    </div>
-                    <div class="col m-2">
-                        <img src="http://placekitten.com/200/300" alt="Alternate Text" />
+                        <table id="tblImagenes" class="table table-hover text-center table-responsive-lg bg-light" style="width: 100%">
+                            <thead>
+                                <tr>
+                                    <th>Imagen</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <asp:Repeater ID="rptImagenes" runat="server">
+                                    <ItemTemplate>
+                                        <tr>
+                                            <td>
+                                                <img src="<%# Eval("UrlImagen") %>" alt="<%# Eval("NombreImagen") %>" />
+                                            </td>
+                                        </tr>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

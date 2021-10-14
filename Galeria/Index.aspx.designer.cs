@@ -111,7 +111,7 @@ namespace Galeria
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputFile fileUpload;
+        protected global::System.Web.UI.WebControls.FileUpload fileUpload;
 
         /// <summary>
         /// Control btnCargarArchivo.
@@ -123,6 +123,15 @@ namespace Galeria
         protected global::System.Web.UI.WebControls.Button btnCargarArchivo;
 
         /// <summary>
+        /// Control lblErrorUpload.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblErrorUpload;
+
+        /// <summary>
         /// Control divGaleria.
         /// </summary>
         /// <remarks>
@@ -130,5 +139,14 @@ namespace Galeria
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divGaleria;
+
+        /// <summary>
+        /// Control rptImagenes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptImagenes;
     }
 }
