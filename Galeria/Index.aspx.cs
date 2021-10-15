@@ -33,6 +33,8 @@ namespace Galeria
                 btnLogout.Visible = true;
                 divUpload.Visible = true;
             }
+
+            LlenarTablaImagenes();
         }
 
         protected void btnIngresar_Click(object sender, EventArgs e)
@@ -169,9 +171,23 @@ namespace Galeria
         {
             imagen.setIdUsuario(int.Parse(Session["idUsuario"].ToString()));
             imagen.setNombreImagen(fileUpload.FileName);
-            imagen.setUrlImagen(fileName);
+            imagen.setUrlImagen(fileName.Substring(fileName.LastIndexOf("images")));
 
             return imagen;
+        }
+        protected void LlenarTablaImagenes()
+        {
+            DataSet ds;
+            try
+            {
+                ds = imagenRepo.ImagenesObtener();
+                rptImagenes.DataSource = ds;
+                rptImagenes.DataBind();
+            }
+            catch(Exception ex)
+            {
+                
+            }
         }
     }
 }

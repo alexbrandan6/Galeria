@@ -39,5 +39,18 @@ namespace Galeria.Repositorio
             SqlParametros.Value = imagen.getUrlImagen();
 
         }
+        public DataSet ImagenesObtener()
+        {
+            try
+            {
+                AccesoDatos acc = new AccesoDatos();
+                SqlCommand datos = new SqlCommand();
+                return acc.EjecutarProcedimientoAlmacenado(datos, "SP_Imagenes_Obtener");
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
     }
 }

@@ -12,6 +12,8 @@
         <script src="js/index.js"></script>
         <script src="js/Funciones.js"></script>
         <script src="js/jquery-3.5.1.min.js"></script>
+        <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+        <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.js"></script>
     </head>
     <body>
         <form id="form1" runat="server">
@@ -22,7 +24,7 @@
                     <asp:LinkButton ID="btnLogout" runat="server" OnClick="btnLogout_Click">Salir</asp:LinkButton>
                 </div>
 
-                <span style="font-size:35px;cursor:pointer; position:relative; left: 5px;" onclick="openNav()">&#9776;</span>
+                <span style="font-size:25px;cursor:pointer; position:relative; left: 5px;" onclick="openNav()">MENU</span>
             </div>
         
             <div id="divLogin" runat="server" class="container p-3 mt-3 border">
@@ -31,7 +33,7 @@
                         <asp:TextBox ID="txtUsuario" runat="server" CssClass="form-control" placeholder="Usuario"></asp:TextBox>
                     </div>
                     <div class="col-12 col-sm-auto col-md-auto col-lg-auto p-2">
-                        <asp:TextBox ID="txtContra" runat="server" CssClass="form-control" placeholder="Contraseña"></asp:TextBox>
+                        <asp:TextBox ID="txtContra" runat="server" CssClass="form-control" placeholder="Contraseña" TextMode="Password"></asp:TextBox>
                     </div>
                 </div>
 
@@ -68,35 +70,28 @@
                 </div>
             </div>
 
-            <div id="divGaleria" runat="server" class="container border p-3 mt-3">
-                <div class="row">
-                    <div class="col m-2">
-                        <table id="tblImagenes" class="table table-hover text-center table-responsive-lg bg-light" style="width: 100%">
-                            <thead>
-                                <tr>
-                                    <th>Imagen</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <asp:Repeater ID="rptImagenes" runat="server">
-                                    <ItemTemplate>
-                                        <tr>
-                                            <td>
-                                                <img src="<%# Eval("UrlImagen") %>" alt="<%# Eval("NombreImagen") %>" />
-                                            </td>
-                                        </tr>
-                                    </ItemTemplate>
-                                </asp:Repeater>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+            <div id="divGaleria" runat="server" class="grid-container border p-3 mt-3">
+                <asp:Repeater ID="rptImagenes" runat="server">
+                    <ItemTemplate>
+                        <img src="<%# Eval("UrlImagen") %>" alt="<%# Eval("NombreImagen") %>" class="grid-item"/>
+                    </ItemTemplate>
+                </asp:Repeater>
             </div>
         </form>
     </body>
 </html>
 
 <script>
+
+    var elem = document.querySelector('.grid-container');
+    imagesLoaded(elem, () => {
+        var msnry = new Masonry(elem, {
+            itemSelector: '.grid-item',
+            columnWidth: 230,
+            gutter: 20,
+            isFitWidth: true
+        });
+    });
 
     function Validate() {
         var valida = true;
