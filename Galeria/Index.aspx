@@ -8,7 +8,8 @@
         <title>Galería</title>
 
         <link href="css/Index.css" rel="stylesheet" />
-        <link href="css/bootstrap/bootstrap.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <script src="js/index.js"></script>
         <script src="js/Funciones.js"></script>
         <script src="js/jquery-3.5.1.min.js"></script>
@@ -20,37 +21,12 @@
             <div id="menu">
                 <div id="sideNav" class="sidenav">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                    <a id="SpanUsuario" runat="server" href="#"></a>
+                    <asp:LinkButton id="btnLog" runat="server" data-bs-toggle="modal" data-bs-target="#exampleModal" style="cursor: pointer;">Login</asp:LinkButton>
+                    <asp:LinkButton id="SpanUsuario" runat="server" href="#"></asp:LinkButton>
                     <asp:LinkButton ID="btnLogout" runat="server" OnClick="btnLogout_Click">Salir</asp:LinkButton>
                 </div>
 
                 <span style="font-size:25px;cursor:pointer; position:relative; left: 5px;" onclick="openNav()">MENU</span>
-            </div>
-        
-            <div id="divLogin" runat="server" class="container p-3 mt-3 border">
-                <div class="row d-flex justify-content-center">
-                    <div class="col-12 col-sm-auto col-md-auto col-lg-auto p-2">
-                        <asp:TextBox ID="txtUsuario" runat="server" CssClass="form-control" placeholder="Usuario"></asp:TextBox>
-                    </div>
-                    <div class="col-12 col-sm-auto col-md-auto col-lg-auto p-2">
-                        <asp:TextBox ID="txtContra" runat="server" CssClass="form-control" placeholder="Contraseña" TextMode="Password"></asp:TextBox>
-                    </div>
-                </div>
-
-                <div class="row d-flex justify-content-center">
-                    <div class="col-3 p-2 d-flex justify-content-end">
-                        <asp:Button ID="btnIngresar" runat="server" CssClass="btn btn-success" Text="Ingresar" OnClick="btnIngresar_Click" OnClientClick="return Validate();"/>
-                    </div>
-                    <div class="col-3 p-2 d-flex justify-content-start">
-                        <asp:Button ID="btnCrearUsuario" runat="server" CssClass="btn btn-dark" Text="Crear" OnClick="btnCrearUsuario_Click" OnClientClick="return Validate();"/>
-                    </div>
-                </div>
-
-                <div class="row d-flex justify-content-center">
-                    <div class="col-12 p-2 d-flex justify-content-center">
-                        <asp:Label ID="lblErrorLogin" Text="" runat="server" />
-                    </div>
-                </div>
             </div>
 
             <div id="divUpload" runat="server" class="container p-3 mt-3 border">
@@ -70,12 +46,43 @@
                 </div>
             </div>
 
-            <div id="divGaleria" runat="server" class="grid-container border p-3 mt-3">
+            <div id="divGaleria" runat="server" class="grid-container border p-3 mt-5">
                 <asp:Repeater ID="rptImagenes" runat="server">
                     <ItemTemplate>
                         <img src="<%# Eval("UrlImagen") %>" alt="<%# Eval("NombreImagen") %>" class="grid-item"/>
                     </ItemTemplate>
                 </asp:Repeater>
+            </div>
+
+            <div class="modal fade" id="exampleModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Login</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row d-flex justify-content-center">
+                                <div class="col-12 col-sm-auto col-md-auto col-lg-auto p-2">
+                                    <asp:TextBox ID="txtUsuario" runat="server" CssClass="form-control" placeholder="Usuario"></asp:TextBox>
+                                </div>
+                                <div class="col-12 col-sm-auto col-md-auto col-lg-auto p-2">
+                                    <asp:TextBox ID="txtContra" runat="server" CssClass="form-control" placeholder="Contraseña" TextMode="Password"></asp:TextBox>
+                                </div>
+
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-12 p-2 d-flex justify-content-center">
+                                        <asp:Label ID="lblErrorLogin" Text="" runat="server" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <asp:Button ID="btnIngresar" runat="server" CssClass="btn btn-success" Text="Ingresar" OnClick="btnIngresar_Click" OnClientClick="return Validate();" />
+                            <asp:Button ID="btnCrearUsuario" runat="server" CssClass="btn btn-dark" Text="Crear" OnClick="btnCrearUsuario_Click" OnClientClick="return Validate();" />
+                        </div>
+                    </div>
+                </div>
             </div>
         </form>
     </body>

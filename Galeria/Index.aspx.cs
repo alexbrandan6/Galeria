@@ -23,15 +23,18 @@ namespace Galeria
         {
             if (Session["User"] is null)
             {
-                divLogin.Visible = true;
+                btnLog.Visible = true;
                 btnLogout.Visible = false;
                 divUpload.Visible = false;
+                SpanUsuario.Visible = false;
             }
             else
             {
-                divLogin.Visible = false;
+                btnLog.Visible = false;
                 btnLogout.Visible = true;
                 divUpload.Visible = true;
+                SpanUsuario.Text = Session["User"].ToString();
+                SpanUsuario.Visible = true;
             }
 
             LlenarTablaImagenes();
@@ -52,8 +55,9 @@ namespace Galeria
                     {
                         Session["User"] = txtUsuario.Text;
                         Session["idUsuario"] = ds.Tables[0].Rows[0]["idUsuario"].ToString();
-                        SpanUsuario.InnerText = txtUsuario.Text;
-                        divLogin.Visible = false;
+                        SpanUsuario.Text = txtUsuario.Text;
+                        btnLog.Visible = false;
+                        SpanUsuario.Visible = true;
                         btnLogout.Visible = true;
                         divUpload.Visible = true;
                     }
@@ -123,10 +127,11 @@ namespace Galeria
         {
             Session["User"] = null;
             Session["idUsuario"] = null;
-            SpanUsuario.InnerHtml = "";
-            divLogin.Visible = true;
+            SpanUsuario.Text = "";
+            SpanUsuario.Visible = false;
             btnLogout.Visible = false;
             divUpload.Visible = false;
+            btnLog.Visible = true;
         }
 
         protected void btnCargarArchivo_Click(object sender, EventArgs e)

@@ -6,7 +6,7 @@
     height: 100%;
     width: 0;
     position: fixed;
-    z-index: 1;
+    z-index: 2000;
     top: 0;
     left: 0;
     background-color: #111;
@@ -22,10 +22,12 @@
         color: #818181;
         display: block;
         transition: 0.3s;
+        cursor: pointer;
     }
 
         .sidenav a:hover {
-            color: #f1f1f1;
+            color: black;
+            background-color: white;
         }
 
     .sidenav .closebtn {
@@ -34,7 +36,17 @@
         right: 25px;
         font-size: 36px;
         margin-left: 50px;
+        background-color: transparent;
     }
+        .sidenav .closebtn:hover {
+            background-color: transparent !important;
+            color: white;
+        }
+
+#form1 {
+    transition: margin-left .5s;
+    padding: 16px;
+}
 
 @media screen and (max-height: 450px) {
     .sidenav {
