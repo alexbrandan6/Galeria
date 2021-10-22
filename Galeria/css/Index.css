@@ -58,7 +58,6 @@
     width: 230px;
     margin-bottom: 40px;
     border-radius: 10px;
-    cursor: pointer;
     background-color: lightgray;
     transition: transform .2s;
 }

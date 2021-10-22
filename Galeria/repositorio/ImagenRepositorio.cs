@@ -52,5 +52,27 @@ namespace Galeria.Repositorio
                 throw;
             }
         }
+        public DataSet ImageneDatosObtener(Imagen imagen)
+        {
+            try
+            {
+                AccesoDatos acc = new AccesoDatos();
+                SqlCommand datos = new SqlCommand();
+                ArmarParametrosImagenObtenerDatos(ref datos, imagen);
+                return acc.EjecutarProcedimientoAlmacenado(datos, "SP_Imagen_ObtenerDatos_Id");
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+        private void ArmarParametrosImagenObtenerDatos(ref SqlCommand datos, Imagen imagen)
+        {
+            SqlParameter SqlParametros = new SqlParameter();
+
+            SqlParametros = datos.Parameters.Add("@idImagen", SqlDbType.Int);
+            SqlParametros.Value = imagen.getIdImagen();
+
+        }
     }
 }

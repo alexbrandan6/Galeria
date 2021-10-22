@@ -7,7 +7,7 @@ namespace Galeria.Modelo
 {
     public class Imagen
     {
-        private int idImagen;
+        private string idImagen;
         private int idUsuario;
         private string NombreImagen;
         private string UrlImagen;
@@ -18,6 +18,14 @@ namespace Galeria.Modelo
             this.idUsuario = idUsuario;
             this.NombreImagen = NombreImagen;
             this.UrlImagen = UrlImagen;
+        }
+        public string getIdImagen()
+        {
+            return idImagen;
+        }
+        public void setIdImagen(string idImagen)
+        {
+            this.idImagen = idImagen;
         }
         public int getIdUsuario()
         {
