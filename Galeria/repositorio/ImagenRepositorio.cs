@@ -74,5 +74,29 @@ namespace Galeria.Repositorio
             SqlParametros.Value = imagen.getIdImagen();
 
         }
+        public DataSet CategoriaImagenGuardar(Imagen imagen, String idCategoria)
+        {
+            try
+            {
+                AccesoDatos acc = new AccesoDatos();
+                SqlCommand datos = new SqlCommand();
+                ArmarParametrosCategoriaImagenGuardar(ref datos, imagen, idCategoria);
+                return acc.EjecutarProcedimientoAlmacenado(datos, "SP_Imagen_Categoria_Guardar");
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+        private void ArmarParametrosCategoriaImagenGuardar(ref SqlCommand datos, Imagen imagen, String idCategoria)
+        {
+            SqlParameter SqlParametros = new SqlParameter();
+
+            SqlParametros = datos.Parameters.Add("@idImagen", SqlDbType.Int);
+            SqlParametros.Value = imagen.getIdImagen();
+
+            SqlParametros = datos.Parameters.Add("@idCategoria", SqlDbType.Int);
+            SqlParametros.Value = idCategoria;
+        }
     }
 }

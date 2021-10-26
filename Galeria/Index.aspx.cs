@@ -19,6 +19,7 @@ namespace Galeria
         Imagen imagen = new Imagen();
         ImagenRepositorio imagenRepo = new ImagenRepositorio();
         DataSet ds = new DataSet();
+        AccesoDatos acc = new AccesoDatos();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["User"] is null)
@@ -35,6 +36,11 @@ namespace Galeria
                 divUpload.Visible = true;
                 SpanUsuario.Text = Session["User"].ToString();
                 SpanUsuario.Visible = true;
+
+                if(!IsPostBack)
+                {
+                    LlenarCategorias();
+                }
             }
 
             LlenarTablaImagenes();
@@ -60,6 +66,8 @@ namespace Galeria
                         SpanUsuario.Visible = true;
                         btnLogout.Visible = true;
                         divUpload.Visible = true;
+
+                        LlenarCategorias();
                     }
                     else
                     {
@@ -148,10 +156,28 @@ namespace Galeria
                         string fileName = Path.Combine(Server.MapPath("~/images"), fileUpload.FileName);
                         fileUpload.SaveAs(fileName);
 
-                        imagenRepo.ImagenGuardar(LlenarDatosImagen(imagen, fileName));
-
-                        lblErrorUpload.Text = "Hecho, imagen subida correctamente.";
-                        lblErrorUpload.ForeColor = Color.Green;
+                        ds = imagenRepo.ImagenGuardar(LlenarDatosImagen(imagen, fileName));
+                        
+                        if (ds.Tables[0].Rows[0][0] != null)
+                        {
+                            imagen.setIdImagen(ds.Tables[0].Rows[0][0].ToString());
+                            if(CargarCategoriaImagen(imagen))
+                            {
+                                lblErrorUpload.Text = "Hecho, imagen subida correctamente.";
+                                lblErrorUpload.ForeColor = Color.Green;
+                            }
+                            else
+                            {
+                                lblErrorUpload.Text = "Error, no se pudo subir categoria a la base de datos.";
+                                lblErrorUpload.ForeColor = Color.Red;
+                            }
+                            
+                        }
+                        else
+                        {
+                            lblErrorUpload.Text = "Error, no se pudo subir imangen a la base de datos.";
+                            lblErrorUpload.ForeColor = Color.Red;
+                        }
 
                         LlenarTablaImagenes();
                     }
@@ -193,7 +219,42 @@ namespace Galeria
             }
             catch(Exception ex)
             {
-                
+                lblErrorUpload.Text = ex.Message.ToString();
+            }
+        }
+        protected void LlenarCategorias()
+        {
+            string stQuery = "SELECT * FROM tblCategorias ORDER BY 2 ASC";
+            try
+            {
+                ds = acc.EjecutarScript(stQuery);
+                chkCategorias.DataSource = ds;
+                chkCategorias.DataBind();
+            }
+            catch(Exception ex)
+            {
+                lblErrorUpload.Text = ex.Message.ToString();
+            }
+        }
+        protected bool CargarCategoriaImagen(Imagen imagen)
+        {
+            try
+            {
+                foreach (ListItem listItem in chkCategorias.Items)
+                {
+                    if (listItem.Selected)
+                    {
+                        string idCategoria = listItem.Value;
+                        imagenRepo.CategoriaImagenGuardar(imagen, idCategoria);
+                    }
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                lblErrorUpload.Text = ex.Message.ToString();
+                return false;
             }
         }
     }

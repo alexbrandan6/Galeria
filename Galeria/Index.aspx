@@ -34,12 +34,39 @@
                     <div class="col-12 col-sm-auto col-md-auto col-lg-auto p-2">
                         <asp:FileUpload ID="fileUpload" runat="server" CssClass="form-control"/>
                     </div>
-                    <div class="col-12 col-sm-auto col-md-auto col-lg-auto p-2">
-                        <asp:Button ID="btnCargarArchivo" runat="server" CssClass="btn btn-warning" Text="Cargar" OnClick="btnCargarArchivo_Click"/>
+                </div>
+
+                <div class="row d-flex justify-content-center">
+                    <div class="col-12 col-sm-auto col-md-auto col-lg-auto p-2 table-responsive">
+                        <table class="table">
+                            <tr>
+                                <td class="d-flex justify-content-center">
+                                    <span>
+                                        <strong>Seleccionar categoria</strong>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="ks-cboxtags">
+                                    <ul class="ks-cboxtags">
+                                        <li>
+                                            <asp:CheckBoxList ID="chkCategorias" runat="server" DataTextField="Descripcion" DataValueField="idCategoria"
+                                                RepeatColumns="10"
+                                                CellPadding="2"
+                                                CellSpacing="2">
+                                            </asp:CheckBoxList>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
 
                 <div class="row d-flex justify-content-center">
+                    <div class="col-12 col-sm-auto col-md-auto col-lg-auto p-2">
+                        <asp:Button ID="btnCargarArchivo" runat="server" CssClass="btn btn-warning" Text="Cargar" OnClick="btnCargarArchivo_Click"/>
+                    </div>
                     <div class="col-12 p-2 d-flex justify-content-center">
                         <asp:Label ID="lblErrorUpload" Text="" runat="server" />
                     </div>
