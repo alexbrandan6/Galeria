@@ -152,6 +152,8 @@ namespace Galeria
 
                         lblErrorUpload.Text = "Hecho, imagen subida correctamente.";
                         lblErrorUpload.ForeColor = Color.Green;
+
+                        LlenarTablaImagenes();
                     }
                     else
                     {
